@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    <title>Pizzeria Pepperoni</title>
+
+{% endblock %}
+
+{% block navbar %}
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="#home" class="w3-bar-item w3-button">Pizzeria Pepperoni</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="/sign_up" class="w3-bar-item w3-button">Sign up</a>
+        <a href="/home" class="w3-bar-item w3-button">Login</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block body %}
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+    <img class="w3-image" src="{{ url_for('static', filename='img/pizza.jpg') }}" alt="Pizzeria Ivan" width="1366" height="768">
+    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+      <h1 class="w3-xxlarge">La Pizzeria</h1>
+    </div>
+  </header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+    <!-- Menu Section -->
+    <div class="w3-row w3-padding-64" id="menu">
+        <div class="w3-col l6 w3-padding-large">
+          <h1 class="w3-center">Welcome to Pizzeria Pepperoni</h1><br>
+            <h2 class="w3-center">Our Menu</h2><br>
+
+            <h4>Pizzas</h4>
+            <table style="width:100%">
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Size</th>
+                  <th>Price</th>
+                </tr>
+                {% for pizza in pizzas %}
+                <tr>
+                  <td>{{pizza[0]}}</td>
+                  <td>{{pizza[3]}}</td>
+                  <td>{{pizza[2]}}</td>
+                  <td>{{pizza[1]}}€</td>
+                </tr>
+                {% endfor %}
+
+              </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
